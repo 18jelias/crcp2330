@@ -1,0 +1,108 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/Square/SquareGame.jack
+
+/**
+ * Implements the Square Dance game.
+ * In this game you can move a black square around the screen and
+ * change its size during the movement.
+ * In the beginning, the square is located at the top-left corner
+ * of the screen. The arrow keys are used to move the square.
+ * The 'z' & 'x' keys are used to decrement and increment the size.
+ * The 'q' key is used to quit the game.
+ */
+class SoccerGame {
+
+    // The ball
+    field Ball ball;
+
+    // The square's movement direction
+    field int direction; // 0=none,1=up,2=down,3=left,4=right
+
+    /** Constructs a new Square Game. */
+    constructor SoccerGame new() {
+        let ball = Ball.new(50, 50, 15);
+        let direction = 0;
+
+        return this;
+    }
+
+    /** Deallocates the object's memory. */
+    method void dispose() {
+        do ball.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Starts the game. Handles inputs from the user that control
+     *  the square's movement, direction and size. */
+    method void run() {
+        var char key;
+        var boolean exit;
+
+        let exit = false;
+
+        while (~exit) {
+            // waits for a key to be pressed.
+            do drawBorder();
+            while (key = 0) {
+                let key = Keyboard.keyPressed();
+                do moveBall();
+            }
+
+            if (key = 81) {
+                let exit = true;
+            }
+            if (key = 131) {
+                let direction = 1;
+            }
+            if (key = 133) {
+                let direction = 2;
+            }
+            if (key = 130) {
+                let direction = 3;
+            }
+            if (key = 132) {
+                let direction = 4;
+            }
+
+            // waits for the key to be released.
+            while (~(key = 0)) {
+                let key = Keyboard.keyPressed();
+                do moveBall();
+            }
+        }
+            
+        return;
+	}
+
+    /** Moves the square by 2 pixels in the current direction. */
+    method void moveBall() {
+        if (direction = 1) {
+            do ball.moveUp();
+        }
+        if (direction = 2) {
+            do ball.moveDown();
+        }
+        if (direction = 3) {
+            do ball.moveLeft();
+        }
+        if (direction = 4) {
+            do ball.moveRight();
+        }
+
+        do Sys.wait(5); // Delays the next movement.
+        return;
+    }
+
+    method void drawBorder() {
+        do Screen.drawRectangle(0, 0, 510, 30);
+        do Screen.drawRectangle(0, 30, 30, 100);
+        do Screen.drawRectangle(0, 140, 30, 223);
+        do Screen.drawRectangle(480,30,510,100);
+        do Screen.drawRectangle(480, 140, 510, 223);
+        do Screen.drawRectangle(0, 223, 510, 253);
+        return;
+    }
+}
