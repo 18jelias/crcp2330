@@ -1,0 +1,1 @@
+To play, use the arrow keys to move the ball into the open spaces on each end of the playing field. 
