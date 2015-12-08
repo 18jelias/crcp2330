@@ -1,0 +1,85 @@
+class Gameplay {
+    static int score; 
+	field List xPosition;
+	field List yPosition;
+	field int directionX; 
+	field int directionY;
+	field int lineWidth;
+
+	constructor Gameplay new() {
+	    let lineWidth = 5;
+		let xPosition = List.new();
+		let yPosition = List.new();
+		let directionX = 1;
+		let directionY = 0;
+		return this;
+	}
+
+	method void whenPressed() {
+		if (Keyboard.keyPressed()=130) {
+			let directionX = -1;
+			let directionY = 0;
+		} 
+		if (Keyboard.keyPressed()=132) {
+			let directionX = 1;
+			let directionY = 0;
+		} 
+		if (Keyboard.keyPressed()=133) {
+			let directionX = 0;
+			let directionY = 1;
+		} 
+		if (Keyboard.keyPressed()=131) {
+			let directionX = 0;
+			let directionY = -1;
+		} else {
+			let directionX = 1;
+			let directionY = 0;
+		}
+		return; 
+	}
+
+	method void move() {
+		var int counter;
+		var int moveX; 
+		var int moveY;
+		let counter = 0; 
+		do whenPressed();
+
+		while (counter < xPosition.getSize()) {
+			let moveX = Math.multiply(lineWidth, directionX);
+			let moveY = Math.multiply(lineWidth, directionY);
+			do Screen.drawRectangle(xPosition.getAt(counter), yPosition.getAt(counter), xPosition.getAt(counter) + moveX, yPosition.getAt(counter)+moveY); 
+			let counter = counter + 1;
+		}
+		do updateSnake();
+		return;
+	}
+
+	method void updateSnake() {
+		var int counter;
+		var int moveX;
+		var int moveY;
+		let counter = 0;
+
+		while (counter < xPosition.getSize()) {
+			let moveX = Math.multiply(lineWidth, directionX);
+			let moveY = Math.multiply(lineWidth, directionY);
+			do xPosition.insertAt(0, xPosition.getAt(0) + moveX);
+			do yPosition.insertAt(0, yPosition.getAt(0) + moveY); 
+			let counter = counter + 1;
+		}
+		return;
+	}
+
+	method void erase() {
+		return;
+	}
+
+	method boolean isTouchingWall() {
+		return true;
+	}
+
+	method boolean isTouchingFruit() {
+		return true;
+	}
+}

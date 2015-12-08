@@ -1,0 +1,88 @@
+class List {
+
+	field Node head;
+	static int size; 
+
+	constructor List new() {
+		let head = 0;
+		return this;
+
+	}
+
+	method boolean isEmpty() {
+		if (head = 0) {
+			return true;
+		} else {
+			return false; 
+		}
+	}
+
+	method void add(int data) {
+		var Node p;
+		if (isEmpty()) {
+			let head = Node.new(data);
+		} else {
+			let p = head; 
+			while (~p.getNext() = 0) {
+				let p = p.getNext(); 
+				do p.setNext(Node.new(data));
+			}
+		}
+		let size = size + 1;
+		return;
+	}
+
+	method void insertAt(int index, int value) {
+		var Node p;
+		var Node temp;
+		var int counter; 		
+		let p = head;
+		let temp = 0;
+		if (isEmpty()) {
+			let head = Node.new(value);
+		} 
+		if (index = 0) {
+			let temp = p;
+			let head = Node.new(value);
+			let p = head;
+			do p.setNext(temp);
+		} else {
+			let counter = 0;
+			while (counter < index) {
+				let p = p.getNext();
+				let counter = counter + 1;
+			}
+			let temp = p.getNext();
+			do p.setNext(Node.new(value));
+			let p = p.getNext();
+			if (index = size) {
+				do p.setNext(0);
+			} else {
+				do p.setNext(temp);
+			}
+		}
+		let p = 0;
+		let temp = 0;
+		let size = size + 1;
+		return;
+	}
+
+	method void deleteAt(int index) {
+		let size = size - 1;
+		return;
+
+	}
+
+	method void reset() {
+		return;
+	}
+
+	method int getAt(int index) {
+		return index;
+	}
+
+	method int getSize() {
+		return size; 
+	}
+
+}

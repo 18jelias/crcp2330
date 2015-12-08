@@ -1,0 +1,38 @@
+class Node {
+	field int data; 
+	field Node next; 
+	field List xPosition;
+	field List yPosition; 
+
+	constructor Node newNoPam() {
+		let data = 0;
+		let next = 0;
+		return this;
+	}
+
+	constructor Node new(int input) {
+		let data = input;
+		let next = 0;
+		return this;
+	}
+
+	method void setData(int dataInput) {
+		let data = dataInput;
+		let next = 0;
+		return;
+	}
+
+	method int getData() {
+		return data;
+	}
+
+	method void setNext(Node node) {
+		let next = node; 
+		return;
+	}
+
+	method Node getNext() {
+		return next;
+	}
+
+}

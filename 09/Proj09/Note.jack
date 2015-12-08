@@ -1,0 +1,30 @@
+class Note {
+	
+	field int width;
+	field int height;
+	field int x;
+	field int y;
+
+	constructor Note new(int nX, int nY, int nWidth, int nHeight) {
+		let x = nX;
+		let y = nY;
+		let width = nWidth;
+		let height = nHeight; 
+		return this; 
+	}
+
+	method void draw() {
+		do drawNote();
+		return;
+	}
+
+	method void drawNote() {
+		do Screen.drawLine(x+(width/2),y, x+(width/2), y+height-(width/2));
+		do Screen.drawCircle(x, y, width);
+		return;
+	}
+
+	method boolean isTouching() {
+		return true; 
+	}
+}
