@@ -1,5 +1,15 @@
 #! /usr/bin/env ruby
+class Assembler 
+	def initialize(asm_file, hack_file)
+		@asm_file = asm_file
+		@hack_file = hack_file
+	end 
 
+	def assemble!
+		puts @asm_file.read
+	end 
+
+end
 
 def args_valid?
 	return (ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1)
@@ -12,7 +22,7 @@ end
 def hack_filename(asm_filename)
 	asm_basename = File.basename(asm_filename, '.asm')
 	path = File.split(asm_filename)[0]
-	"#{path}/#{asm_basename}.hack"
+	return "#{path}/#{asm_basename}.hack"
 end
 
 unless args_valid?
