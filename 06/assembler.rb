@@ -1,7 +1,5 @@
 #! /usr/bin/env ruby
 
-puts "How's the weather?"
+asm_filename ARGV[0]
 
-weather = gets.chomp
-
-puts "Is it really #{weather}. I couldn't have guessed!"
+puts asm_filename
