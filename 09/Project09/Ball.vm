@@ -357,7 +357,7 @@ function Ball.isInGoal 0
 push argument 0
 pop pointer 0
 push this 0
-push constant 223
+push constant 480
 gt
 push this 1
 and

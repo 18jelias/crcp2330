@@ -67,9 +67,8 @@ class SoccerGame {
                 let direction = 4;
             }
 
-            if (ball.isInGoal() = true) {
+            if (ball.isInGoal()) {
                 let exit = true; 
-                do gameOver();
             }
 
 
@@ -78,6 +77,9 @@ class SoccerGame {
                 let key = Keyboard.keyPressed();
                 do moveBall();
             }
+        }
+        while (exit) {
+            do gameOver();
         }
             
         return;
@@ -113,7 +115,7 @@ class SoccerGame {
     }
 
     method void gameOver() {
-        do Output.clearScreen();
+        do Screen.clearScreen();
         do Output.println("Congrats!");
         return;
     }

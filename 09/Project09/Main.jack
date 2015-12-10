@@ -10,6 +10,8 @@ class Main {
 
     /** Initializes a new game and starts it. */    
     function void main() {
+
+    	//do Output.println("hello world");
         var SoccerGame game;
 
         let game = SoccerGame.new();
