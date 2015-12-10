@@ -18,5 +18,7 @@ asm_filename = ARGV[0]
 unless(is_readable?(asm_filename))
 	abort("#{asm_filename} is not found or is unreadable readable.")
 end
-	puts "The contents of #{asm_filename}"
 
+puts "The contents of #{asm_filename}"
+asm_file = File.open(asm_filename, 'r')
+puts asm_file.read
