@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
 
-if (ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1)
+if (ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1 && File.readable?(ARGV[0]) && File.exist?(ARGV[0]))
   asm_filename=ARGV[0]
   puts asm_filename
 else
