@@ -6,7 +6,7 @@ class Parser
 	end
 
 	def parse
-		@assembly_instruction.each do |instruction|
+		@assembly_instructions.each do |instruction|
 			if command_type(instruction) == :a_command
 				@machine_instructions << assemble_a_command(instruction)
 			elsif command_type(instruction) == :c_command
@@ -23,12 +23,11 @@ class Parser
 	end
 
 	#Translates into binary
-	def constant(mnemonic)
+	def constant(value)
 		"%015b" % value 
 	end
 
 	def assemble_c_command(instruction)
-		command = "111"
 		return "1110000000000000"
 	end
 
