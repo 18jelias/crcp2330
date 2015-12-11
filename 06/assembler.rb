@@ -27,7 +27,6 @@ class Assembler
 		return lines
 	end
 
-
 end
 
 
